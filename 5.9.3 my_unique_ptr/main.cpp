@@ -9,21 +9,15 @@ public:
 	{}
 	~my_unique_ptr()
 	{
-		if (!nullpointer)
-		{
 			delete ptr;
-
-		}
 	}
 	
 	my_unique_ptr(const my_unique_ptr& other) = delete;
 
 	T* release()
 	{
-		T* ptr2 = new T;
-		ptr2 = ptr;
+		T* ptr2 = ptr;
 		ptr = nullptr;
-		nullpointer = true;
 		return ptr2;
 	}
 
@@ -35,7 +29,6 @@ public:
 	my_unique_ptr& operator= (my_unique_ptr& other) = delete;
 
 private:
-	bool nullpointer = false;
 	T* ptr;
 };
 
